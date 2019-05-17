@@ -34,3 +34,6 @@
     ca.sickkids.ccm.lfs/lfs-commons/${lfs.version}/slingfeature/slingfeature
     ca.sickkids.ccm.lfs/lfs-homepage/${lfs.version}/slingfeature/slingfeature
     ca.sickkids.ccm.lfs/lfs-dataentry/${lfs.version}/slingfeature/slingfeature
+
+    ca.sickkids.ccm.lfs/lfs-homepage2/${lfs.version}
+    ca.sickkids.ccm.lfs/lfs-homepage3/${lfs.version}
