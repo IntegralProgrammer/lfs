@@ -1,0 +1,5 @@
+{
+    "jcr:primaryType": "lfs:Homepage",
+    "sling:resourceType": "lfs/Homepage",
+    "title": "Welcome to the LFS project",
+}
