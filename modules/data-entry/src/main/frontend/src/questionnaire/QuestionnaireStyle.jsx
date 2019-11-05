@@ -62,6 +62,12 @@ const questionnaireStyle = theme => ({
     mdash: {
         padding: theme.spacing(0, 1),
     },
+    questionHeader: {
+        paddingBottom: theme.spacing(0),
+    },
+    warningTypography: {
+        padding: theme.spacing(1, 1),
+    }
 });
 
 export default questionnaireStyle;
