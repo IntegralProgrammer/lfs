@@ -18,14 +18,20 @@
 //
 import React from "react";
 import LiveTable from "./LiveTable.jsx";
+import Form from "../questionnaire/Form.jsx";
 
 export default function Forms(props) {
+  const { match, location } = props;
+  const entry = /Forms\/(.+)/.exec(location.pathname);
+  if (entry) {
+    return <Form id={entry[1]}/>;
+  }
   const columns = [
     {
       "key": "jcr:uuid",
       "label": "Identifier",
       "format": "string",
-      "link": "path",
+      "link": "dashboard+path",
     },
     {
       "key": "questionnaire/title",

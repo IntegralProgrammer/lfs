@@ -17,36 +17,35 @@
 //  under the License.
 //
 
-import React from "react";
+import { withStyles } from "@material-ui/core";
+
 import PropTypes from "prop-types";
 
-import { Card, CardHeader, CardContent, withStyles } from "@material-ui/core";
-
+import MultipleChoice from "./MultipleChoice";
+import Question from "./Question";
 import QuestionnaireStyle from "./QuestionnaireStyle";
 
-// GUI for displaying answers
-function Question (props) {
-  let { classes, children, questionDefinition } = props;
-  let { text, description } = { ...questionDefinition, ...props }
+import AnswerComponentManager from "./AnswerComponentManager";
+
+// Component that renders a pedigree question.
+function PedigreeQuestion(props) {
+  const {existingAnswer, ...rest} = props;
+
   return (
-    <Card>
-      <CardHeader
-        title={text}
-        titleTypographyProps={{ variant: 'h6' }}
-        subheader={description}
-        className={classes.questionHeader}
-        />
-      <CardContent>
-        {children}
-      </CardContent>
-    </Card>
-    );
+    <Question
+      {...rest}
+      >
+      {existingAnswer && existingAnswer.length > 0 && existingAnswer[1].image &&
+        <div dangerouslySetInnerHTML={{__html: existingAnswer[1].image}}/>
+      }
+    </Question>);
 }
 
-Question.propTypes = {
-    classes: PropTypes.object.isRequired,
-    text: PropTypes.string,
-    description: PropTypes.string
-};
+const StyledPedigreeQuestion = withStyles(QuestionnaireStyle)(PedigreeQuestion)
+export default StyledPedigreeQuestion;
 
-export default withStyles(QuestionnaireStyle)(Question);
+AnswerComponentManager.registerAnswerComponent((questionDefinition) => {
+  if (questionDefinition.dataType === "pedigree") {
+    return [StyledPedigreeQuestion, 50];
+  }
+});

@@ -1,6 +1,11 @@
 {
   "jcr:primaryType": "lfs:Questionnaire",
   "title": "Tissue Metrix Data",
+  "Pedigree": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Pedigree",
+    "dataType": "pedigree"
+  },
   "File1": {
     "jcr:primaryType": "lfs:Question",
     "text": "File1",
