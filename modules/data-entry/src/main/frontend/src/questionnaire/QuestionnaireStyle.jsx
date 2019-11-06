@@ -67,6 +67,12 @@ const questionnaireStyle = theme => ({
     },
     warningTypography: {
         padding: theme.spacing(1, 1),
+    },
+    cardHeaderButton: {
+        // No styles here yet
+    },
+    newFormButton: {
+        float: "right"
     }
 });
 
