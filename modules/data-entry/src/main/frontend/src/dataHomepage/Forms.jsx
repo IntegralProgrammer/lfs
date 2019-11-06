@@ -27,12 +27,13 @@ import questionnaireStyle from "../questionnaire/QuestionnaireStyle.jsx";
 import NewFormDialog from "./NewFormDialog.jsx";
 
 function Forms(props) {
+  const { match, location, classes } = props;
+
   const entry = /Forms\/(.+)/.exec(location.pathname);
   if (entry) {
     return <Form id={entry[1]}/>;
   }
 
-  const { match, location, classes } = props;
   const [ title, setTitle ] = useState("Forms");
   const [ titleFetchSent, setFetchStatus ] = useState(false);
   const [ questionnairePath, setQuestionnairePath ] = useState(undefined);
