@@ -73,6 +73,10 @@ const questionnaireStyle = theme => ({
     },
     newFormButton: {
         float: "right"
+    },
+    pedigreeSmall: {
+        width: "100%",
+        height: "100%"
     }
 });
 

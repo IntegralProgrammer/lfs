@@ -1,6 +1,11 @@
 {
   "jcr:primaryType": "lfs:Questionnaire",
   "title": "Tissue Metrix Data",
+  "VocabTest": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Vocabulary test",
+    "dataType": "vocabulary"
+  },
   "Pedigree": {
     "jcr:primaryType": "lfs:Question",
     "text": "Pedigree",
