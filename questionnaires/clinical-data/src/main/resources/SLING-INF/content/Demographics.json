@@ -467,7 +467,7 @@
     "minAnswers": 1,
     "maxAnswers": 1,
     "displayMode": "input",
-    "dataType": "long"
+    "dataType": "decimal"
   },
   "Co-morbidities": {
     "jcr:primaryType": "lfs:Question",
