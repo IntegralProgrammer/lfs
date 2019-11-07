@@ -352,13 +352,20 @@ public class DataImportServlet extends SlingAllMethodsServlet
                     result = valueFactory.createValue(Double.valueOf(rawValue));
                     break;
                 case "decimal":
-                    result = valueFactory.createValue(new BigDecimal(rawValue));
+                    try {
+                        result = valueFactory.createValue(new BigDecimal(rawValue));
+                    } catch (NumberFormatException ex) {
+                        LOGGER.warn("Invalid decimal value for question [{}]: [{}]", question, rawValue);
+                    }
                     break;
                 case "boolean":
                     result = valueFactory.createValue(Boolean.valueOf(rawValue));
                     break;
                 case "date":
-                    result = valueFactory.createValue(parseDate(rawValue));
+                    Calendar c = parseDate(rawValue);
+                    if (c != null) {
+                        result = valueFactory.createValue(c);
+                    }
                     break;
                 case "text":
                 default:
@@ -418,7 +425,7 @@ public class DataImportServlet extends SlingAllMethodsServlet
                 while (childNodes.hasNext()) {
                     Node childNode = childNodes.nextNode();
                     if (!"lfs:AnswerOption".equals(childNode.getPrimaryNodeType().getName())
-                        || childNode.getProperty(prop) == null) {
+                        || !childNode.hasProperty(prop)) {
                         continue;
                     }
                     if (StringUtils.equals(value, childNode.getProperty(prop).getString())) {
@@ -438,7 +445,7 @@ public class DataImportServlet extends SlingAllMethodsServlet
             LOGGER.warn("Unexpected error while standardizing value [{}] for question [{}]: {}", value, question,
                 ex.getMessage());
         }
-        return result;
+        return value;
     }
 
     /**
