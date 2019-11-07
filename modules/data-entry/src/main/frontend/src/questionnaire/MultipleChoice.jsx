@@ -48,7 +48,7 @@ function MultipleChoice(props) {
     // Only the internal values are stored, turn them into pairs of [label, value]
     // Values that are not predefined come from a custom input, and custom inputs use either the same name as their answer (multiple inputs)
     // or the the special ghost sentinel value
-    .map(answer => (defaults.find(e => e[1] === String(answer)) || [String(answer), maxAnswers > 1 ? String(answer) : GHOST_SENTINEL]));
+    .map(answer => (defaults.find(e => e[1] === String(answer)) || [String(answer), maxAnswers === 1 ? GHOST_SENTINEL : String(answer)]));
   const isBare = defaults.length === 0 && maxAnswers === 1;
   const isRadio = defaults.length > 0 && maxAnswers === 1;
   // All options = the union of all defaults + existing answers, without duplicates
