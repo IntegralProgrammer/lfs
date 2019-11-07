@@ -104,7 +104,7 @@ export default function Form (props) {
           {
             data && data.subject && data.subject.identifier ?
               <Typography variant="h2">{data.subject.identifier}</Typography>
-            : id
+            : <Typography variant="h2">{id}</Typography>
           }
           {
             data && data['jcr:createdBy'] && data['jcr:created'] ?
