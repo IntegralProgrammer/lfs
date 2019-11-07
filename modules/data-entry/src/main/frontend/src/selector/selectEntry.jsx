@@ -86,17 +86,6 @@ class VocabularyEntry extends React.Component {
             )
             }
         </ListItem>
-        {
-          /* Add the hidden inputs if this is a user input selection (i.e. !isPreselected)
-             or if this is a suggestion that is checked */
-          (!isPreselected || this.state.checked) ?
-          (
-          <React.Fragment>
-            <input type="hidden" name="name" value={name} />
-            <input type="hidden" name="id" value={id} />
-          </React.Fragment>
-          ) : ""
-        }
       </React.Fragment>
     );
   }

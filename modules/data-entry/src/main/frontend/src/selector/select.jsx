@@ -26,6 +26,7 @@ import SelectorStyle from "./selectorStyle.jsx";
 import VocabularyEntry from "./selectEntry.jsx";
 import SelectionResults from "./selectionResults.jsx";
 import { MakeRequest, REST_URL } from "../query/util.jsx";
+import Answer from "../questionnaire/Answer.jsx";
 
 const NAME_POS = 0;
 const ID_POS = 1;
@@ -47,7 +48,8 @@ class VocabularySelector extends React.Component {
   }
 
   render() {
-    const {source, suggestionCategories, max, selectionContainer, defaultSuggestionIDs, defaultSuggestionNames, classes, ...rest} = this.props;
+    const {source, suggestionCategories, max, selectionContainer, defaultSuggestionIDs, defaultSuggestionNames, classes, questionDefinition,
+          existingAnswer, ...rest} = this.props;
     const disabled = max > 1 && this.state.selected >= max;
     const isRadio = max === 1;
     const reminderText = `Please select at most ${max} options.`;
@@ -82,6 +84,13 @@ class VocabularySelector extends React.Component {
             </SelectionResults>
           )
         }
+        {/* Generate the hidden answer array */}
+        <Answer
+          answers={this.state.listChildren}
+          answerNodeType={'lfs:VocabularyAnswer'}
+          questionDefinition={questionDefinition}
+          existingAnswer={existingAnswer}
+        />
       </React.Fragment>
     );
   }
