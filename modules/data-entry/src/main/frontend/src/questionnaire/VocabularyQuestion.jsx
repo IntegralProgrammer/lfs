@@ -26,7 +26,7 @@ import Question from "./Question";
 import QuestionnaireStyle from "./QuestionnaireStyle";
 
 import AnswerComponentManager from "./AnswerComponentManager";
-//import VocabularySelector from "VocabularyThesaurus";
+import VocabularySelector from "../selector/select";
 
 // Component that renders a vocabulary question.
 // Selected answers are placed in a series of <input type="hidden"> tags for
@@ -49,26 +49,29 @@ import AnswerComponentManager from "./AnswerComponentManager";
 //   enableUnknown
 //   />
 function VocabularyQuestion(props) {
-  let { errorText, ...rest } = props;
-  let { maxAnswers, suggestionCategories } = {...props.questionDefinition, ...props};
+  let { classes, errorText, ...rest } = props;
+  let { maxAnswers, suggestionCategories } = { ...props.questionDefinition, ...props };
+  let defaultSuggestions = {}
   let defaults = props.defaults || Object.values(props.questionDefinition)
     // Keep only answer options
     // FIXME Must deal with nested options, do this recursively
     .filter(value => value['jcr:primaryType'] == 'lfs:AnswerOption')
     // Only extract the labels and internal values from the node
     .map(value => [value.label || value.value, value.value, true]);
+  // Reparse defaults into a format VocabularySelector understands
+  defaults.forEach( (value) => {defaultSuggestions[value[0]] = value[1]});
 
   return (
     <Question
       {...rest}
       >
-      {/*<VocabularySelector
+      <VocabularySelector
         suggestionCategories = {suggestionCategories}
         source = "hpo"
         max={maxAnswers}
-        defaultSuggestions={defaults}
+        defaultSuggestions={defaultSuggestions}
         {...rest}
-      />*/}
+      />
     </Question>);
 }
 
