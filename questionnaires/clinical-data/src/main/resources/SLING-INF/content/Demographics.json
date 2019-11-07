@@ -3,7 +3,9 @@
   "title": "Demographics Data",
   "Patient ID": {
     "jcr:primaryType": "lfs:Question",
-    "text": "Patient ID"
+    "text": "Patient ID",
+    "minAnswers": 1,
+    "maxAnswers": 1
   },
   "Family": {
     "jcr:primaryType": "lfs:Question",

@@ -33,6 +33,13 @@ const questionnaireStyle = theme => ({
     ghostListItem: {
         padding: theme.spacing(0, 2, 0, 2),
     },
+    bareAnswer: {
+        margin: theme.spacing(0, 0, 0, 3),
+        position: 'relative',
+        display: 'inline-block',
+        paddingBottom: "0px",
+        paddingTop: theme.spacing(1)
+    },
     searchWrapper: {
         margin: theme.spacing(0, 0, 0, 6),
         position: 'relative',
@@ -64,6 +71,7 @@ const questionnaireStyle = theme => ({
     },
     questionHeader: {
         paddingBottom: theme.spacing(0),
+        paddingLeft: theme.spacing(4)
     },
     warningTypography: {
         padding: theme.spacing(1, 1),

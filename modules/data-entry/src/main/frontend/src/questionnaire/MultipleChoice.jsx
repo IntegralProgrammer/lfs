@@ -138,7 +138,7 @@ function MultipleChoice(props) {
   }
 
   // Hold the input box for either multiple choice type
-  let ghostInput = (input || textbox) && (<div className={classes.searchWrapper}>
+  let ghostInput = (input || textbox) && (<div className={isBare ? classes.bareAnswer : classes.searchWrapper}>
       <TextField
         className={classes.textField}
         onChange={(event) => {
