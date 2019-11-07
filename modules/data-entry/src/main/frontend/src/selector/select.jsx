@@ -31,6 +31,7 @@ import Answer from "../questionnaire/Answer.jsx";
 const NAME_POS = 0;
 const ID_POS = 1;
 const IS_PRESELECT_POS = 2;
+const IS_SELECTED_POS = 3;
 
 class VocabularySelector extends React.Component {
   constructor(props) {
@@ -53,6 +54,8 @@ class VocabularySelector extends React.Component {
     const disabled = max > 1 && this.state.selected >= max;
     const isRadio = max === 1;
     const reminderText = `Please select at most ${max} options.`;
+
+    const selectedListChildren = this.state.listChildren.filter( (element) => element[IS_SELECTED_POS] );
 
     return (
       <React.Fragment>
@@ -86,7 +89,7 @@ class VocabularySelector extends React.Component {
         }
         {/* Generate the hidden answer array */}
         <Answer
-          answers={this.state.listChildren}
+          answers={selectedListChildren}
           answerNodeType={'lfs:VocabularyAnswer'}
           questionDefinition={questionDefinition}
           existingAnswer={existingAnswer}
@@ -149,6 +152,7 @@ class VocabularySelector extends React.Component {
           onClick={this.removeSelection}
           disabled={disabled}
           isPreselected={childData[IS_PRESELECT_POS]}
+          currentlySelected={childData[IS_SELECTED_POS]}
           isRadio={isRadio}
         ></VocabularyEntry>
       );
@@ -193,7 +197,7 @@ class VocabularySelector extends React.Component {
     if (this.props.max == 1) {
       // If only 1 child is allowed, replace it instead of copying our array
       var newChildren = this.state.defaultListChildren.slice();
-      newChildren.push([name, id, false]);
+      newChildren.push([name, id, false, true]);
       this.setState({
         listChildren: newChildren,
         selected: 1,
@@ -202,7 +206,7 @@ class VocabularySelector extends React.Component {
     } else {
       // As per React specs, we do not modify the state array directly, but slice and add
       var newChildren = this.state.listChildren.slice();
-      newChildren.push([name, id, false]);
+      newChildren.push([name, id, false, true]);
       this.setState({
         listChildren: newChildren,
         selected: this.state.selected + 1
@@ -216,10 +220,12 @@ class VocabularySelector extends React.Component {
 
   populateDefaults() {
     var newChildren = this.state.listChildren.slice();
+    const hasExistingAnswers = this.props.existingAnswer && this.props.existingAnswer.length > 1 && this.props.existingAnswer[1].value;
+    const existingAnswers = hasExistingAnswers && this.props.existingAnswer[1].value;
     for (var id in this.props.defaultSuggestions) {
       // If we are given a name, use it
       if (typeof this.props.defaultSuggestions[id] !== "undefined") {
-        newChildren.push([this.props.defaultSuggestions[id], id, true]);
+        newChildren.push([this.props.defaultSuggestions[id], id, true, hasExistingAnswers && existingAnswers.includes(id)]);
         continue;
       }
 
@@ -232,8 +238,12 @@ class VocabularySelector extends React.Component {
     };
 
     // If any answers are existing (i.e. we are loading an old form), also populate these
-    if (this.props.existingAnswer && this.props.existingAnswer.length > 1) {
+    if (hasExistingAnswers) {
       Array.of(this.props.existingAnswer[1].value).flat().forEach( (id) => {
+        // Do not add a pre-existing answer if it is a default
+        if (id in this.props.defaultSuggestions) {
+          return;
+        }
         // Determine the name from our vocab
         var testId = id;
         var escapedId = id.replace(":", "\\:"); // URI Escape the : from HP: for SolR
@@ -248,17 +258,18 @@ class VocabularySelector extends React.Component {
   }
 
   addDefaultSuggestion = (status, data, id, isSuggestion) => {
+    const hasExistingAnswers = this.props.existingAnswer && this.props.existingAnswer.length > 1 && this.props.existingAnswer[1].value;
+    const existingAnswers = this.props.existingAnswer[1].value;
     if (status === null) {
       var name = id;
       // Determine if we can find the name from here
       if (data["rows"].length > 0) {
         name = data["rows"][0]["name"];
       }
-      // If the name could not be found, use the ID as the name
 
       // Possible race condition here?
       var newChildren = this.state.listChildren.slice();
-      newChildren.push([name, id, isSuggestion]);
+      newChildren.push([name, id, isSuggestion, hasExistingAnswers && existingAnswers.includes(id)]);
       this.setState({
         defaultListChildren: newChildren,
         listChildren: newChildren
@@ -269,7 +280,7 @@ class VocabularySelector extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // Use JSON.stringify to compare the values of defaultSuggestions rather than their refs
+    // Use JSON.stringify to clistChildrenompare the values of defaultSuggestions rather than their refs
     if (JSON.stringify(prevProps.defaultSuggestions) !== JSON.stringify(this.props.defaultSuggestions)) {
       this.populateDefaults();
     }
@@ -279,10 +290,17 @@ class VocabularySelector extends React.Component {
     // Do not remove this element if it is in our default suggestions
     // Instead, just update the number of items selected
     if (typeof this.props.defaultSuggestions !== "undefined" && id in this.props.defaultSuggestions) {
+      // Furthermore, we need to update the listChildren to do stuff
+      const newChildren = this.state.listChildren.slice().map( (childData) => {
+        if (childData[ID_POS] === id && childData[NAME_POS] === name) {
+          childData[IS_SELECTED_POS] = !wasSelected;
+        }
+        return(childData);
+      })
       if (wasSelected) {
-        this.setState({selected: this.state.selected - 1});
+        this.setState({listChildren: newChildren, selected: this.state.selected - 1});
       } else {
-        this.setState({selected: this.state.selected + 1});
+        this.setState({listChildren: newChildren, selected: this.state.selected + 1});
       }
       return;
     }

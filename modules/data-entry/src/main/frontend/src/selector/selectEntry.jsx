@@ -29,7 +29,7 @@ class VocabularyEntry extends React.Component {
     super(props);
 
     this.state = {
-      checked: false,
+      checked: props.currentlySelected,
     }
   }
 
