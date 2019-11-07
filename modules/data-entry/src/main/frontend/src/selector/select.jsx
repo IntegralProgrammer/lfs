@@ -228,14 +228,26 @@ class VocabularySelector extends React.Component {
       var escapedId = id.replace(":", "\\:"); // URI Escape the : from HP: for SolR
       var customFilter = encodeURIComponent(`id:${escapedId}`);
       var URL = `${REST_URL}/${this.props.source}/suggest?sort=nameSort%20asc&maxResults=1&input=${id}&customFilter=${customFilter}`
-      MakeRequest(URL, (status, data) => this.addDefaultSuggestion(status, data, testId));
+      MakeRequest(URL, (status, data) => this.addDefaultSuggestion(status, data, testId, true));
     };
+
+    // If any answers are existing (i.e. we are loading an old form), also populate these
+    if (this.props.existingAnswer && this.props.existingAnswer.length > 1) {
+      this.props.existingAnswer[1].value.forEach( (id) => {
+        // Determine the name from our vocab
+        var testId = id;
+        var escapedId = id.replace(":", "\\:"); // URI Escape the : from HP: for SolR
+        var customFilter = encodeURIComponent(`id:${escapedId}`);
+        var URL = `${REST_URL}/${this.props.source}/suggest?sort=nameSort%20asc&maxResults=1&input=${id}&customFilter=${customFilter}`
+        MakeRequest(URL, (status, data) => this.addDefaultSuggestion(status, data, testId, false));
+      });
+    }
     this.setState({
       listChildren: newChildren,
     });
   }
 
-  addDefaultSuggestion = (status, data, id) => {
+  addDefaultSuggestion = (status, data, id, isSuggestion) => {
     if (status === null) {
       var name = id;
       // Determine if we can find the name from here
@@ -246,7 +258,7 @@ class VocabularySelector extends React.Component {
 
       // Possible race condition here?
       var newChildren = this.state.listChildren.slice();
-      newChildren.push([name, id, true]);
+      newChildren.push([name, id, isSuggestion]);
       this.setState({
         defaultListChildren: newChildren,
         listChildren: newChildren
