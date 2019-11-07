@@ -34,7 +34,7 @@ const questionnaireStyle = theme => ({
         padding: theme.spacing(0, 2, 0, 2),
     },
     bareAnswer: {
-        margin: theme.spacing(0, 0, 0, 3),
+        margin: theme.spacing(0, 0, 0, 2),
         position: 'relative',
         display: 'inline-block',
         paddingBottom: "0px",
@@ -48,7 +48,7 @@ const questionnaireStyle = theme => ({
         paddingTop: theme.spacing(1)
     },
     answerField: {
-        margin: theme.spacing(0, 0, 0, 6),
+        margin: theme.spacing(0, 0, 0, 2),
         position: 'relative',
         display: 'inline-block',
     },

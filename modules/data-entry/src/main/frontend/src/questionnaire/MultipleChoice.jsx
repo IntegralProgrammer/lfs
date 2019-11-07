@@ -46,18 +46,24 @@ function MultipleChoice(props) {
     // The value can either be a single value or an array of values; force it into an array
     Array.of(existingAnswer[1].value).flat()
     // Only the internal values are stored, turn them into pairs of [label, value]
-    // Values that are not predefined come from a custom input, and custom inputs use a special value
-    .map(answer => (defaults.find(e => e[1] === String(answer)) || [String(answer), GHOST_SENTINEL]));
+    // Values that are not predefined come from a custom input, and custom inputs use either the same name as their answer (multiple inputs)
+    // or the the special ghost sentinel value
+    .map(answer => (defaults.find(e => e[1] === String(answer)) || [String(answer), maxAnswers > 1 ? String(answer) : GHOST_SENTINEL]));
+  const isBare = defaults.length === 0 && maxAnswers === 1;
+  const isRadio = defaults.length > 0 && maxAnswers === 1;
+  // All options = the union of all defaults + existing answers, without duplicates
+  const all_options = defaults.slice().concat(initialSelection.filter( (selectedAnswer) => defaults.indexOf(selectedAnswer) < 0));
   const [selection, setSelection] = useState(initialSelection);
-  // FIXME This doesn't work with multiple values
-  const [ghostName, setGhostName] = useState(existingAnswer && existingAnswer[1].value || '');
+  const [ghostName, setGhostName] = useState(isBare && existingAnswer && existingAnswer[1].value || '');
   const [ghostValue, setGhostValue] = useState(GHOST_SENTINEL);
-  const [options, setOptions] = useState(defaults);
+  const [options, setOptions] = useState(all_options);
   const ghostSelected = selection.some(element => {return element[VALUE_POS] === GHOST_SENTINEL;});
-  const isRadio = maxAnswers === 1 && options.length > 0;
-  const isBare = options.length === 0 && maxAnswers === 1;
   const disabled = maxAnswers > 0 && selection.length >= maxAnswers && !isRadio;
   let inputEl = null;
+
+  if (props.questionDefinition.text == "Tumor type") {
+    console.log(initialSelection);
+  }
 
   let selectOption = (id, name, checked = false, removeSentinel = false) => {
     if (isRadio) {
