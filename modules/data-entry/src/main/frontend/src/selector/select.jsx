@@ -233,7 +233,7 @@ class VocabularySelector extends React.Component {
 
     // If any answers are existing (i.e. we are loading an old form), also populate these
     if (this.props.existingAnswer && this.props.existingAnswer.length > 1) {
-      this.props.existingAnswer[1].value.forEach( (id) => {
+      Array.of(this.props.existingAnswer[1].value).flat().forEach( (id) => {
         // Determine the name from our vocab
         var testId = id;
         var escapedId = id.replace(":", "\\:"); // URI Escape the : from HP: for SolR
