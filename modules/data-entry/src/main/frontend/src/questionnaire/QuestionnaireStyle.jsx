@@ -35,13 +35,14 @@ const questionnaireStyle = theme => ({
     },
     bareAnswer: {
         margin: theme.spacing(0, 0, 0, 2),
+        paddingLeft: "0px",
         position: 'relative',
         display: 'inline-block',
         paddingBottom: "0px",
         paddingTop: theme.spacing(1)
     },
     searchWrapper: {
-        margin: theme.spacing(0, 0, 0, 6),
+        marginLeft: "0px",
         position: 'relative',
         display: 'inline-block',
         paddingBottom: "0px",
