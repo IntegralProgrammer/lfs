@@ -8,6 +8,17 @@
       "text": "Pedigree",
       "dataType": "pedigree"
     },
+    "VocabTest": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Vocabulary test",
+      "dataType": "vocabulary"
+    },
+      "text": "Vocabulary test",
+    "VocabTest": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Vocabulary test",
+      "dataType": "vocabulary"
+    },
     "File1": {
       "jcr:primaryType": "lfs:Question",
       "text": "File1"

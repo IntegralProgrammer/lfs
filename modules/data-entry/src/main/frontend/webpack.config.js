@@ -22,6 +22,7 @@ module.exports = {
     [module_name + 'questionnairesIcon']: '@material-ui/icons/Assignment.js',
     [module_name + 'formsIcon']: '@material-ui/icons/Description.js',
     [module_name + 'dateQuestion']: './src/questionnaire/DateQuestion.jsx',
+    [module_name + 'vocabularyQuestion']: './src/questionnaire/VocabularyQuestion.jsx'
   },
   plugins: [
     new CleanWebpackPlugin(),
