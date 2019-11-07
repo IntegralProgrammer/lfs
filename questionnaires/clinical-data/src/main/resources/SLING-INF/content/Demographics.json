@@ -15,6 +15,11 @@
     "displayMode": "input",
     "dataType": "text"
   },
+  "Pedigree": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Pedigree",
+    "dataType": "pedigree"
+  },
   "Gender": {
     "jcr:primaryType": "lfs:Question",
     "text": "Gender",
