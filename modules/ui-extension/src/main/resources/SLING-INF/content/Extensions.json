@@ -1,0 +1,17 @@
+{
+  "jcr:primaryType": "sling:Folder",
+  "AdminVocabularies": {
+    "jcr:primaryType": "lfs:Extension",
+    "lfs:extensionPointId": "lfs/coreUI/sidebar/entry",
+    "lfs:extensionName": "Test rig",
+    "lfs:icon": "asset:lfs-vocabularies.vocabulariesIcon.js",
+    "lfs:extensionRenderURL": "asset:lfs-uiextension.testRig.js",
+    "lfs:targetURL": "testRig",
+    "lfs:defaultOrder": 100,
+    "jcr:content": {
+      "jcr:primaryType": "nt:resource",
+      "jcr:data": "test",
+      "jcr:mimeType": "text/html"
+    }
+  }
+}
