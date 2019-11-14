@@ -17,25 +17,4 @@
 //  under the License.
 //
 
-import React from "react";
-
-import ExtensionPoint from "./extensionPoint.jsx";
-
-export default function TestRig(props) {
-  return(
-    <React.Fragment>
-      { /* Succeeds at evaluating a .js file */}
-      <ExtensionPoint
-        path="/testRig.js"
-        />
-      { /* Succeeds at obtaining an HTML file */}
-      <ExtensionPoint
-        path="/testRig.html"
-        />
-      { /* Fails successfully with an invalid type */}
-      <ExtensionPoint
-        path="/libs/lfs/resources/cancer-cells.jpg"
-        />
-    </React.Fragment>
-  )
-}
+console.log("Javascript inserted!");
