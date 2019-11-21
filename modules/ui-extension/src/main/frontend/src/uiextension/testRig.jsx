@@ -17,25 +17,20 @@
 //  under the License.
 //
 
-import React from "react";
+import React, { useState } from "react";
 
 import ExtensionPoint from "./extensionPoint.jsx";
 
 export default function TestRig(props) {
+  let [ jsonData, setJsonData ] = useState();
   return(
     <React.Fragment>
-      { /* Succeeds at evaluating a .js file */}
+      { /* Succeeds at evaluating a .json extension point */}
       <ExtensionPoint
-        path="/testRig.js"
+        path="lfs/coreUI/sidebar/entry"
+        callback={(test) => {console.log(test); setJsonData(JSON.stringify(test));}}
         />
-      { /* Succeeds at obtaining an HTML file */}
-      <ExtensionPoint
-        path="/testRig.html"
-        />
-      { /* Fails successfully with an invalid type */}
-      <ExtensionPoint
-        path="/libs/lfs/resources/cancer-cells.jpg"
-        />
+      {jsonData}
     </React.Fragment>
   )
 }
