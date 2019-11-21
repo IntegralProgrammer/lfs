@@ -1,0 +1,10 @@
+{
+    "jcr:primaryType": "lfs:ExtensionPoint",
+    "lfs:extensionPointId": "lfs/TestUI/JS",
+    "lfs:extensionPointName": "Test rig for a .js file",
+    "jcr:content": {
+      "jcr:primaryType": "nt:resource",
+      "jcr:data": "console.log('This is from a javscript file, located in an lfs:Extension')",
+      "jcr:mimeType": "application/javascript"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "jcr:primaryType": "lfs:ExtensionPoint",
+    "lfs:extensionPointId": "lfs/TestUI/HTML",
+    "lfs:extensionPointName": "Test rig for a .html file",
+    "jcr:content": {
+      "jcr:primaryType": "nt:resource",
+      "jcr:data": "<b>I'm an html file, located in an lfs:Extension</b>",
+      "jcr:mimeType": "text/html"
+    }
+}

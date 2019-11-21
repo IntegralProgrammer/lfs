@@ -25,11 +25,20 @@ export default function TestRig(props) {
   let [ jsonData, setJsonData ] = useState();
   return(
     <React.Fragment>
+      { /* Succeeds at evaluating a .js extension point */}
+      <ExtensionPoint
+        path="lfs/TestUI/JS"
+        />
+      { /* Succeeds at rendering a .html extension point */}
+      <ExtensionPoint
+        path="lfs/TestUI/HTML"
+        />
       { /* Succeeds at evaluating a .json extension point */}
       <ExtensionPoint
         path="lfs/coreUI/sidebar/entry"
         callback={(test) => {console.log(test); setJsonData(JSON.stringify(test));}}
         />
+      JSON Data:
       {jsonData}
     </React.Fragment>
   )

@@ -10,8 +10,30 @@
     "lfs:defaultOrder": 100,
     "jcr:content": {
       "jcr:primaryType": "nt:resource",
-      "jcr:data": "test",
+      "jcr:data": "",
       "jcr:mimeType": "text/html"
+    }
+  },
+  "HTMLTestRig": {
+    "jcr:primaryType": "lfs:Extension",
+    "lfs:extensionPointId": "lfs/TestUI/HTML",
+    "lfs:extensionName": "Test rig (HTML)",
+    "lfs:defaultOrder": 100,
+    "jcr:content": {
+      "jcr:primaryType": "nt:resource",
+      "jcr:data": "<b>I'm an html file, located in an lfs:Extension</b>",
+      "jcr:mimeType": "text/html"
+    }
+  },
+  "JSTestRig": {
+    "jcr:primaryType": "lfs:Extension",
+    "lfs:extensionPointId": "lfs/TestUI/JS",
+    "lfs:extensionName": "Test rig (JS)",
+    "lfs:defaultOrder": 100,
+    "jcr:content": {
+      "jcr:primaryType": "nt:resource",
+      "jcr:data": "console.log('This is from a javscript file, located in an lfs:Extension')",
+      "jcr:mimeType": "application/json"
     }
   }
 }
