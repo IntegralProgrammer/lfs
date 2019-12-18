@@ -45,4 +45,49 @@
     <module>permissions-provider</module>
     <module>vocabularies</module>
   </modules>
+
+  <build>
+    <plugins>
+      <!-- Run Python script to consolidate webpack.js and pachake.json files of all modules -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <configuration>
+              <executable>python</executable>
+              <workingDirectory>src/main/frontend/</workingDirectory>
+              <arguments>
+                <argument>webpack_script.py</argument>
+                <argument>${project.basedir}</argument>
+              </arguments>    
+            </configuration>
+            <id>python-build</id>
+            <phase>initialize</phase>
+            <goals>
+               <goal>exec</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Compile the React code -->
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+      </plugin>
+
+      <!--<plugin>
+        <groupId>org.apache.rat</groupId>
+        <artifactId>apache-rat-plugin</artifactId>
+        <version>0.13</version>
+        <configuration>
+          <excludes combine.children="append">
+            <exclude>**/vocabQuery/queryStyle.jsx</exclude>
+            <exclude>**/vocabQuery/themeStyle.jsx</exclude>
+          </excludes>
+        </configuration>
+      </plugin>-->
+    </plugins>
+  </build>
 </project>
