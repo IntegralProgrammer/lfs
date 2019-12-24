@@ -5,6 +5,15 @@
     "jcr:primaryType": "lfs:Question",
     "text": "Patient ID"
   },
+	"Resected": {
+		"jcr:primaryType": "lfs:Question",
+		"text": "Resected",
+		"minAnswers": 0,
+		"maxAnswers": 1,
+		"displayMode": "list",
+		"dataType": "boolean",
+		"enableUnknown": "true"
+	},
   "Family": {
     "jcr:primaryType": "lfs:Question",
     "text": "Family",
