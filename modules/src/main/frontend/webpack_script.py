@@ -1,5 +1,6 @@
 import json
 import sys
+import shutil
 import os
 import os.path
 from os import path
@@ -34,7 +35,9 @@ def merge_packache_json_files(base_dir, project_to_name_map):
 
 
 def merge_webpack_files(base_dir, project_to_name_map):
+    webpack_merged_template = os.path.join(base_dir, 'src', 'main', 'frontend', 'webpack.config-template.js')
     webpack_merged = os.path.join(base_dir, 'src', 'main', 'frontend', 'webpack.config.js')
+    shutil.copy2(webpack_merged_template, webpack_merged)
     entries = []
     externals = []
 
