@@ -1,6 +1,26 @@
 {
   "jcr:primaryType": "lfs:Questionnaire",
   "title": "Demographics Data",
+  "Test": {
+    "jcr:primaryType": "lfs:Section",
+    "label": "label",
+    "description": "description",
+    "recurrent": true,
+    "Test Question": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Test question"
+    },
+    "Test Section": {
+      "jcr:primaryType": "lfs:Section",
+      "label": "subsection label",
+      "description": "subsection description",
+      "recurrent": true,
+      "Test Question": {
+        "jcr:primaryType": "lfs:Question",
+        "text": "Subsection question"
+      }
+    }
+  },
   "patient_id": {
     "jcr:primaryType": "lfs:Question",
     "text": "Patient ID"
