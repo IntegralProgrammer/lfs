@@ -18,6 +18,36 @@
       "Test Question": {
         "jcr:primaryType": "lfs:Question",
         "text": "Subsection question"
+      },
+      "Test Section": {
+        "jcr:primaryType": "lfs:Section",
+        "label": "subsection label",
+        "description": "subsection description",
+        "recurrent": true,
+        "Test Question": {
+          "jcr:primaryType": "lfs:Question",
+          "text": "Subsection question"
+        },
+        "Test Section": {
+          "jcr:primaryType": "lfs:Section",
+          "label": "subsection label",
+          "description": "subsection description",
+          "recurrent": true,
+          "Test Question": {
+            "jcr:primaryType": "lfs:Question",
+            "text": "Subsection question"
+          },
+          "Test Section": {
+            "jcr:primaryType": "lfs:Section",
+            "label": "subsection label",
+            "description": "subsection description",
+            "recurrent": true,
+            "Test Question": {
+              "jcr:primaryType": "lfs:Question",
+              "text": "Subsection question"
+            }
+          }
+        }
       }
     }
   },
