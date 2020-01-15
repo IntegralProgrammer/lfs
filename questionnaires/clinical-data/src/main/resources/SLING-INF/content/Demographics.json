@@ -55,6 +55,10 @@
     "jcr:primaryType": "lfs:Question",
     "text": "Patient ID"
   },
+  "Test Link": {
+    "jcr:primaryType": "lfs:SectionLink",
+    "ref": "/Questionnaires/Demographics/Test"
+  },
   "family": {
     "jcr:primaryType": "lfs:Question",
     "text": "Family",
