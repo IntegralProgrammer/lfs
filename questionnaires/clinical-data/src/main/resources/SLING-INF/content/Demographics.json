@@ -5,6 +5,14 @@
     "jcr:primaryType": "lfs:Question",
     "text": "Patient ID"
   },
+  "chromosome1": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Chromosome Question One",
+    "minAnswers": 1,
+    "maxAnswers": 1,
+    "dataType": "chromosome",
+    "chromosomeNumber": 8
+  },
   "family": {
     "jcr:primaryType": "lfs:Question",
     "text": "Family",
