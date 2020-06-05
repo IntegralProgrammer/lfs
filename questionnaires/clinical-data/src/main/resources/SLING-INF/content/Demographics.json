@@ -10,8 +10,7 @@
     "text": "Chromosome Question One",
     "minAnswers": 1,
     "maxAnswers": 1,
-    "dataType": "chromosome",
-    "chromosomeNumber": 8
+    "dataType": "chromosome"
   },
   "family": {
     "jcr:primaryType": "lfs:Question",
