@@ -147,7 +147,8 @@ public class OwlParser implements SourceParser
         throws VocabularyIndexException
     {
         // Identifier code is the local name of the term
-        String identifier = term.getLocalName();
+        // Special chars not allowed here. How should I encode???
+        String identifier = term.getLocalName() + ".term";
 
         // Read all the statements about this term, and extract property=value pairs
         StmtIterator properties = term.listProperties();
