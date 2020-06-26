@@ -1,0 +1,35 @@
+{
+  "jcr:primaryType": "lfs:Questionnaire",
+  "title": "LFS Multi-String Bug Test",
+  "jcr:reference:requiredSubjectTypes": ["/SubjectTypes/Patient"],
+  
+  
+  "stringref_eq_stringconst": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Must be equal to hello",
+    "dataType": "text"
+  },
+  "stringref_eq_stringconst_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["stringref_eq_stringconst"],
+        "isReference": true
+      },
+      "comparator": "=",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["hello"]
+      }
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  }
+}
