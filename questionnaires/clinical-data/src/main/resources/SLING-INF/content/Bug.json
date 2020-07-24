@@ -1,0 +1,210 @@
+{
+  "jcr:primaryType": "lfs:Questionnaire",
+  "title": "Bug",
+  "jcr:reference:requiredSubjectTypes": ["/SubjectTypes/Patient"],
+  "bug_1": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Value A (Integer, less than Value B)",
+    "minAnswers": 1,
+    "maxAnswers": 1,
+    "dataType": "long"
+  },
+  "bug_2": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Value B (Integer)",
+    "minAnswers": 1,
+    "maxAnswers": 1,
+    "dataType": "long"
+  },
+  "bug1_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["bug_1"],
+        "isReference": true
+      },
+      "comparator": "<",
+      "dataType": "long",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["bug_2"],
+        "isReference": true
+      }
+    },
+    "confirm_okay1": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "The condition evaluated to true",
+      "minAnswers": 1,
+      "maxAnswers": 1,
+      "dataType": "decimal",
+      "minValue" : 0
+    }
+  },
+
+  "bug_3": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Value A (Double, less than Value B)",
+    "minAnswers": 1,
+    "maxAnswers": 1,
+    "dataType": "double"
+  },
+  "bug_4": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Value B (Double)",
+    "minAnswers": 1,
+    "maxAnswers": 1,
+    "dataType": "double"
+  },
+  "bug2_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["bug_3"],
+        "isReference": true
+      },
+      "comparator": "<",
+      "dataType": "double",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["bug_4"],
+        "isReference": true
+      }
+    },
+    "confirm_okay2": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "The condition evaluated to true",
+      "minAnswers": 1,
+      "maxAnswers": 1,
+      "dataType": "decimal",
+      "minValue" : 0
+    }
+  },
+
+  "bug_5": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Value A (Decimal, less than Value B)",
+    "minAnswers": 1,
+    "maxAnswers": 1,
+    "dataType": "decimal"
+  },
+  "bug_6": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Value B (Decimal)",
+    "minAnswers": 1,
+    "maxAnswers": 1,
+    "dataType": "decimal"
+  },
+  "bug3_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["bug_5"],
+        "isReference": true
+      },
+      "comparator": "<",
+      "dataType": "decimal",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["bug_6"],
+        "isReference": true
+      }
+    },
+    "confirm_okay3": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "The condition evaluated to true",
+      "minAnswers": 1,
+      "maxAnswers": 1,
+      "dataType": "decimal",
+      "minValue" : 0
+    }
+  },
+
+  "bug_7": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Value A (Date, less than Value B)",
+    "minAnswers": 1,
+    "maxAnswers": 1,
+    "dataType": "date"
+  },
+  "bug_8": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Value B (Date)",
+    "minAnswers": 1,
+    "maxAnswers": 1,
+    "dataType": "date"
+  },
+  "bug4_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["bug_7"],
+        "isReference": true
+      },
+      "comparator": "<",
+      "dataType": "date",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["bug_8"],
+        "isReference": true
+      }
+    },
+    "confirm_okay4": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "The condition evaluated to true",
+      "minAnswers": 1,
+      "maxAnswers": 1,
+      "dataType": "decimal",
+      "minValue" : 0
+    }
+  },
+
+  "bug_9": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Value A (String, equal to HELLO)",
+    "minAnswers": 1,
+    "maxAnswers": 1,
+    "dataType": "text"
+  },
+  "bug5_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["bug_9"],
+        "isReference": true
+      },
+      "comparator": "=",
+      "dataType": "text",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["HELLO"],
+        "isReference": false
+      }
+    },
+    "confirm_okay5": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "The condition evaluated to true",
+      "minAnswers": 1,
+      "maxAnswers": 1,
+      "dataType": "decimal",
+      "minValue" : 0
+    }
+  },
+
+  "comments": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Comments",
+    "maxAnswers": 1,
+    "displayMode": "textbox",
+    "dataType": "text"
+  }
+}
