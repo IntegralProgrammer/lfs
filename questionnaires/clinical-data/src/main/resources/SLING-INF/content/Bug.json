@@ -1,0 +1,51 @@
+{
+  "jcr:primaryType": "lfs:Questionnaire",
+  "title": "Bug",
+  "jcr:reference:requiredSubjectTypes": ["/SubjectTypes/Patient"],
+  "bug_1": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Value A",
+    "minAnswers": 1,
+    "maxAnswers": 1,
+    "dataType": "long"
+  },
+  "bug_2": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Value B",
+    "minAnswers": 1,
+    "maxAnswers": 1,
+    "dataType": "long"
+  },
+  "bug_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["bug_1"],
+        "isReference": true
+      },
+      "comparator": "<",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["bug_2"],
+        "isReference": true
+      }
+    },
+    "confirm_okay": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "The condition evaluated to true",
+      "minAnswers": 1,
+      "maxAnswers": 1,
+      "dataType": "decimal",
+      "minValue" : 0
+    }
+  },
+  "comments": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Comments",
+    "maxAnswers": 1,
+    "displayMode": "textbox",
+    "dataType": "text"
+  }
+}
