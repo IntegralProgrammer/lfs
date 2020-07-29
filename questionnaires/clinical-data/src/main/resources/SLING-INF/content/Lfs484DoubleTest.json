@@ -1,0 +1,271 @@
+{
+  "jcr:primaryType": "lfs:Questionnaire",
+  "title": "LFS-484 (Double) Test",
+  "jcr:reference:requiredSubjectTypes": ["/SubjectTypes/Patient"],
+  
+  
+  "stringref_eq_stringconst": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Must be equal to 22.5",
+    "dataType": "double"
+  },
+  "stringref_eq_stringconst_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["stringref_eq_stringconst"],
+        "isReference": true
+      },
+      "comparator": "=",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": [22.5]
+      },
+      "dataType": "double"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+  
+  
+  "stringref_neq_stringconst": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Must NOT be equal to 22.5",
+    "dataType": "double"
+  },
+  "stringref_neq_stringconst_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["stringref_neq_stringconst"],
+        "isReference": true
+      },
+      "comparator": "<>",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": [22.5]
+      },
+      "dataType": "double"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+  
+  "string_ref_one": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Double Value A",
+    "dataType": "double"
+  },
+  "string_ref_two": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Double Value B, make it equal to Double Value A",
+    "dataType": "double"
+  },
+  "stringref_eq_stringref_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_one"],
+        "isReference": true
+      },
+      "comparator": "=",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_two"],
+        "isReference": true
+      },
+      "dataType": "double"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+
+  "string_ref_three": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Double Value C",
+    "dataType": "double"
+  },
+  "string_ref_four": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Double Value D, make it not equal to Double Value C",
+    "dataType": "double"
+  },
+  "stringref_neq_stringref_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_three"],
+        "isReference": true
+      },
+      "comparator": "<>",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_four"],
+        "isReference": true
+      },
+      "dataType": "double"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+
+  "string_ref_five": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Double Value E",
+    "dataType": "double"
+  },
+  "string_ref_six": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Double Value F, make it less than Double Value E",
+    "dataType": "double"
+  },
+  "stringref_lt_stringref_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_six"],
+        "isReference": true
+      },
+      "comparator": "<",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_five"],
+        "isReference": true
+      },
+      "dataType": "double"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+
+  "string_ref_seven": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Double Value G",
+    "dataType": "double"
+  },
+  "string_ref_eight": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Double Value H, make it greater than Double Value G",
+    "dataType": "double"
+  },
+  "stringref_gt_stringref_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_eight"],
+        "isReference": true
+      },
+      "comparator": ">",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_seven"],
+        "isReference": true
+      },
+      "dataType": "double"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+  
+  "must_be_null": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Must be empty",
+    "dataType": "double"
+  },
+  "must_be_null_details": {
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["must_be_null"],
+        "isReference": true
+      },
+      "comparator": "is empty",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["must_be_null"],
+        "isReference": true
+      },
+      "dataType": "double"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+
+  "must_not_be_null": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Must NOT be empty",
+    "dataType": "double"
+  },
+  "must_not_be_null_details": {
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["must_not_be_null"],
+        "isReference": true
+      },
+      "comparator": "is not empty",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["must_not_be_null"],
+        "isReference": true
+      },
+      "dataType": "double"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  }
+}

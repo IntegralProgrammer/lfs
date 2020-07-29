@@ -1,0 +1,271 @@
+{
+  "jcr:primaryType": "lfs:Questionnaire",
+  "title": "LFS-484 (Long) Test",
+  "jcr:reference:requiredSubjectTypes": ["/SubjectTypes/Patient"],
+  
+  
+  "stringref_eq_stringconst": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Must be equal to 22",
+    "dataType": "long"
+  },
+  "stringref_eq_stringconst_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["stringref_eq_stringconst"],
+        "isReference": true
+      },
+      "comparator": "=",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": [22]
+      },
+      "dataType": "long"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+  
+  
+  "stringref_neq_stringconst": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Must NOT be equal to 22",
+    "dataType": "long"
+  },
+  "stringref_neq_stringconst_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["stringref_neq_stringconst"],
+        "isReference": true
+      },
+      "comparator": "<>",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": [22]
+      },
+      "dataType": "long"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+  
+  "string_ref_one": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Long Value A",
+    "dataType": "long"
+  },
+  "string_ref_two": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Long Value B, make it equal to Long Value A",
+    "dataType": "long"
+  },
+  "stringref_eq_stringref_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_one"],
+        "isReference": true
+      },
+      "comparator": "=",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_two"],
+        "isReference": true
+      },
+      "dataType": "long"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+
+  "string_ref_three": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Long Value C",
+    "dataType": "long"
+  },
+  "string_ref_four": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Long Value D, make it not equal to Long Value C",
+    "dataType": "long"
+  },
+  "stringref_neq_stringref_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_three"],
+        "isReference": true
+      },
+      "comparator": "<>",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_four"],
+        "isReference": true
+      },
+      "dataType": "long"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+
+  "string_ref_five": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Long Value E",
+    "dataType": "long"
+  },
+  "string_ref_six": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Long Value F, make it less than Long Value E",
+    "dataType": "long"
+  },
+  "stringref_lt_stringref_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_six"],
+        "isReference": true
+      },
+      "comparator": "<",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_five"],
+        "isReference": true
+      },
+      "dataType": "long"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+
+  "string_ref_seven": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Long Value G",
+    "dataType": "long"
+  },
+  "string_ref_eight": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Long Value H, make it greater than Long Value G",
+    "dataType": "long"
+  },
+  "stringref_gt_stringref_details": {
+    "jcr:primaryType": "lfs:Section",
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_eight"],
+        "isReference": true
+      },
+      "comparator": ">",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["string_ref_seven"],
+        "isReference": true
+      },
+      "dataType": "long"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+  
+  "must_be_null": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Must be empty",
+    "dataType": "long"
+  },
+  "must_be_null_details": {
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["must_be_null"],
+        "isReference": true
+      },
+      "comparator": "is empty",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["must_be_null"],
+        "isReference": true
+      },
+      "dataType": "long"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  },
+
+  "must_not_be_null": {
+    "jcr:primaryType": "lfs:Question",
+    "text": "Must NOT be empty",
+    "dataType": "long"
+  },
+  "must_not_be_null_details": {
+    "condition": {
+      "jcr:primaryType": "lfs:Conditional",
+      "operandA": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["must_not_be_null"],
+        "isReference": true
+      },
+      "comparator": "is not empty",
+      "operandB": {
+        "jcr:primaryType": "lfs:ConditionalValue",
+        "value": ["must_not_be_null"],
+        "isReference": true
+      },
+      "dataType": "long"
+    },
+    "test": {
+      "jcr:primaryType": "lfs:Question",
+      "text": "Confirm okay",
+      "dataType": "text",
+      "minAnswers": 1,
+      "maxAnswers": 1
+    }
+  }
+}
