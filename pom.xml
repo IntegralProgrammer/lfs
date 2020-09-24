@@ -380,6 +380,9 @@
             <exclude>compose-cluster/initializer/initialize_all.sh</exclude>
             <exclude>compose-cluster/mongos/mongo-router.conf</exclude>
             <exclude>compose-cluster/shard*/**</exclude>
+            <!-- Ignore files only in this test branch -->
+            <exclude>TissueMetrix_Example.csv</exclude>
+            <exclude>load_examples.sh</exclude>
           </excludes>
         </configuration>
         <executions>
