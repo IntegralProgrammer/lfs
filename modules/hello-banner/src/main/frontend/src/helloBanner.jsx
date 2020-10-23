@@ -17,7 +17,7 @@
 //  under the License.
 //
 
-import React, { useState } from "react";
+import React from "react";
 
 import {
   AppBar,
@@ -29,7 +29,7 @@ import {
 
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 
-export default function HelloBanner() {
+export default function HelloBanner(props) {
   const StyledAppBar = withStyles({
     root: {
       background: "#00AF44"
@@ -37,7 +37,7 @@ export default function HelloBanner() {
   })(AppBar);
 
   return (
-    <StyledAppBar position="sticky">
+    <StyledAppBar position="fixed" ref={props.onRender}>
       <Toolbar>
         <IconButton edge="start" color="inherit">
           <InsertEmoticonIcon fontsize="large"/>
