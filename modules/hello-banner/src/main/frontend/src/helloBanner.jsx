@@ -40,7 +40,7 @@ export default function HelloBanner(props) {
     <StyledAppBar position="fixed" style={props.style} ref={props.onRender}>
       <Toolbar>
         <IconButton edge="start" color="inherit">
-          <InsertEmoticonIcon fontsize="large"/>
+          <InsertEmoticonIcon fontSize="large"/>
         </IconButton>
         <Typography variant="h6">
           Hello world
